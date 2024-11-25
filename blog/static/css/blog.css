@@ -1,0 +1,35 @@
+h1 a {
+
+    margin: 0 auto;
+    padding: 20px 0;
+    border: 1px solid silver;
+    background: #fafafa
+    color: #4d4234;
+    text-shadow: 3px 3px 1px black;
+    position: relative;
+    z-index: 0;
+}
+
+.title{
+    background-color: #ff3250;
+}
+
+p {
+    font-size: 20px;
+    line-height: 2;
+    letter-spacing: 3px;
+    border: 1px solid silver;
+    background: #fafafa
+    position: relative;
+    z-index: 1;
+}
+
+body {
+
+    width: 600px;
+    margin: 0 auto;
+
+    padding: 0 20 px 20 px 20px;
+    border: 5px solid black;
+}
+
