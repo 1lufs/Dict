@@ -39,27 +39,3 @@ def word_edit(request, pk):
     return render(request, 'blog/word_edit.html', {'form': form})
 
 
-# views.py
-from django.shortcuts import render
-from django.db.models import Q
-from .models import models  # замените на вашу модель
-
-
-def search_view(request):
-    query = request.GET.get('q', '')  # получаем поисковый запрос из GET-параметра 'q'
-
-    if query:
-        # Ищем по всем полям модели (настройте под ваши нужды)
-        results = (
-            models.objects.filter(
-            Q(title__icontains=query) |
-            Q(description__icontains=query) |
-            Q(content__icontains=query)
-        ))
-    else:
-        results = models.objects.none()
-
-    return render(request, 'search_results.html', {
-        'results': results,
-        'query': query
-    })
