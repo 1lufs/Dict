@@ -44,8 +44,9 @@
             {% for word in words %}
 
                     <input type="search" name="text" class="search" placeholder="Введите слово">
+                        <li><a href="{% url 'word_detail' pk=word.pk %}">{{word.word}}</a></li>
                     <input type="submit" name="submit" class="submit" value="Найти">
-                    <li><a href="{% url 'word_detail' pk=word.pk %}">{{word.word}}</a></li>
+
             {% endfor %}
         </form>
     </div>
