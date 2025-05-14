@@ -41,8 +41,11 @@
 
     <div class="search_block">
         <form>
-            <input type="search" name="text" class="search" placeholder="Введите слово">
-            <input type="submit" name="submit" class="submit" value="Найти">
+            {% for word in words %}
+                <li><a href="{% url 'word_detail' pk=word.pk %}">{{word.word}}</a></li>
+                    <input type="search" name="text" class="search" placeholder="Введите слово">
+                    <input type="submit" name="submit" class="submit" value="Найти">
+            {% endfor %}
         </form>
     </div>
 
