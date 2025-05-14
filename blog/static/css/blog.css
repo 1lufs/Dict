@@ -33,13 +33,20 @@ body {
     border: 5px solid black;
 }
 
-* {box-sizing: border-box;}
-body{margin: 0;}
-div {padding: 30px 0}
-form {
-  position: relative;
-  width: 300px;
-  margin: 0 auto;
+input::-webkit-input-placeholder {
+  color: #B6C0A5;
+  font-style: italic;
+  background: #E0EFCA;
+}
+input:-moz-placeholder {
+  color: #B6C0A5;
+  font-style: italic;
+  background: #E0EFCA;
+}
+input:-ms-input-placeholder {
+  color: #B6C0A5;
+  font-style: italic;
+  background: #E0EFCA;
 }
 
 
