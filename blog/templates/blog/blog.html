@@ -40,13 +40,10 @@
     </div>
 
     <div class="search_block">
-        <form>
-
-                <input type="search" name="text" class="search" placeholder="Введите слово">
-                <input type="submit" name="submit" class="submit" value="Найти">
-
-
-
+        <!-- templates/search_form.html -->
+        <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q" placeholder="Поиск..." value="{{ query }}">
+                <button type="submit">Искать</button>
         </form>
     </div>
 
