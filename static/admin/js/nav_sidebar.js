@@ -47,7 +47,7 @@
                 let displayValue = '';
                 if (filterValue) {
                     if (o.title.toLowerCase().indexOf(filterValue) === -1) {
-                        displayValue = '';
+                        displayValue = 'none';
                     } else {
                         matches = true;
                     }
