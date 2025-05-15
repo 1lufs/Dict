@@ -1,9 +1,6 @@
 {% extends 'blog/base.html' %}
 
-
 {% block content %}
-
-
 
 <div class="containerbody">
     <input data-function="swipe" id="swipe" type="checkbox">
@@ -14,12 +11,10 @@
         {% if word != -1 %}
             <h1 align="center"><a href="/">{{ word.word }}</a></h1>
             <p align="center">{{ word.description }}</p>
-
         {% else %}
             <h1 align="center"><a href="/">Поиск влада..</a></h1>
             <p align="center">Выберите слово для расшифровки..</p>
         {% endif %}
-
     </div>
 
     <div class="leftsidebar">
@@ -35,24 +30,16 @@
                 <li><a href="{% url 'word_new' %}">
                     <span>Добавить</span>
                 </a></li>
-                {% endif %}
+            {% endif %}
         </nav>
     </div>
 
     <div class="search_block">
-        <form>
-
-                <input type="search" name="text" class="search" placeholder="Введите слово">
-                <input type="submit" name="submit" class="submit" value="Найти">
-
-
-
+        <form method="GET" action="{% url 'word_search' %}">
+            <input type="search" name="q" class="search" placeholder="Введите слово" value="{{ request.GET.q }}">
+            <input type="submit" name="submit" class="submit" value="Найти">
         </form>
     </div>
-
-
 </div>
 
 {% endblock %}
-
-

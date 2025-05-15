@@ -39,3 +39,21 @@ def word_edit(request, pk):
     return render(request, 'blog/word_edit.html', {'form': form})
 
 
+from django.shortcuts import render
+from .models import Word  # Предполагая, что ваша модель называется Word
+from django.db.models import Q
+
+
+def word_search(request):
+    query = request.GET.get('q')
+    if query:
+        words = Word.objects.filter(
+            Q(word__icontains=query) | Q(description__icontains=query)
+        else:
+        words = Word.objects.all()
+
+        context = {
+            'words': words,
+            'word': -1,  # Чтобы показать заголовок по умолчанию
+        }
+    return render(request, 'blog/blog.html', context)
