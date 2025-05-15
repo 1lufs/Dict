@@ -4,11 +4,10 @@ from . import views
 
 
 urlpatterns = [
-    path('search/', views.word_search, name='word_search'),
+
     path('', views.post_list, name='post_list'),
     path('word/<int:pk>/', views.post_list, name='word_detail'),
     path('word/new/', views.word_new, name='word_new'),
     path('word/<int:pk>/edit/', views.word_edit, name='word_edit')
-
 ]
 
