@@ -1,32 +1,35 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>Word List</h1>
-
-    <!-- Добавляем поисковую форму -->
-    <form method="GET" action=".">
-        <input type="text" name="q" placeholder="Search words..." value="{{ query }}">
+<div class="search-box">
+    <form method="GET" action="">
+        <input type="text" name="q" placeholder="Search words..." value="{{ query|default:'' }}">
         <button type="submit">Search</button>
     </form>
+</div>
 
-    {% if word != -1 %}
-        <div class="word-detail">
-            <h2>{{ word.word }}</h2>
-            <p>{{ word.description }}</p>
-            <p>Published: {{ word.published_date }}</p>
-            <p>Author: {{ word.author }}</p>
-            <a href="{% url 'word_edit' pk=word.pk %}">Edit</a>
-        </div>
+<table>
+    <tr>
+        <th>Word</th>
+        <th>Action</th>
+    </tr>
+    {% for word in words %}
+    <tr>
+        <td>{{ word.word }}</td>
+        <td><a href="{% url 'word_detail' pk=word.pk %}">View</a> | <a href="{% url 'word_edit' pk=word.pk %}">Edit</a></td>
+    </tr>
+    {% if word == selected_word %}
+    <tr>
+        <td colspan="2">
+            <div class="word-detail">
+                <p>{{ word.description }}</p>
+                <small>Published: {{ word.publish_date }}</small>
+            </div>
+        </td>
+    </tr>
     {% endif %}
+    {% endfor %}
+</table>
 
-    <ul>
-        {% for word in words %}
-            <li>
-                <a href="{% url 'word_detail' pk=word.pk %}">{{ word.word }}</a>
-                <p>{{ word.description|truncatechars:50 }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'word_new' %}">Add new word</a>
+<a href="{% url 'word_new' %}" class="add-word-btn">Add new word</a>
 {% endblock %}
